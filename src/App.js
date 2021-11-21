@@ -7,8 +7,8 @@ class App extends Component {
       <div style={{ textAlign: 'center' }}>
         <h2>Welcome to Space Race</h2>
         <Routes>
-          <Route exact path="/" component={() => <p>See README for details</p>} />
-          <Route component={() => <p>404: Navigate to Root</p>} />
+          <Route exact path="/" element={<p>See README for details</p>} />
+          <Route element={<p>404: Navigate to Root</p>} />
         </Routes>
       </div>
     )
