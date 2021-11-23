@@ -1,4 +1,6 @@
 import firebase from 'firebase/compat/app'
+import 'firebase/compat/firestore'
+import 'firebase/compat/auth'
 import * as firebaseui from 'firebaseui'
 import 'firebaseui/dist/firebaseui.css'
 
@@ -15,7 +17,7 @@ const firebaseConfig = {
 const Firebase = firebase.initializeApp(firebaseConfig)
 
 // Database instance
-// export const database = Firebase.firestore()
+export const database = Firebase.firestore()
 
 // Authentication instance
 export const auth = Firebase.auth()
