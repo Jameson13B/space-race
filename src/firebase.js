@@ -15,25 +15,21 @@ const firebaseConfig = {
 const Firebase = firebase.initializeApp(firebaseConfig)
 
 // Database instance
-export const database = Firebase.firestore()
+// export const database = Firebase.firestore()
 
 // Authentication instance
-export const firebaseUI = new firebaseui.auth.AuthUI(Firebase.auth())
+export const auth = Firebase.auth()
+export const firebaseUI = new firebaseui.auth.AuthUI(auth)
+export const launchAuth = (id) => firebaseUI.start(id, uiConfig)
 
 // FirebaseUI config.
 const uiConfig = {
   callbacks: {
     signInSuccessWithAuthResult: () => {},
   },
-  signInOptions: [
-    firebase.auth.PhoneAuthProvider.PROVIDER_ID,
-    firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID,
-  ],
+  signInOptions: [firebase.auth.PhoneAuthProvider.PROVIDER_ID],
   // Terms of service url/callback.
   tosUrl: () => console.log('TOS'),
   // Privacy policy url/callback.
   privacyPolicyUrl: () => console.log('Privacy Policy'),
 }
-
-// The start method will wait until the DOM is loaded.
-// ui.start('#firebaseui-auth-container', uiConfig)
