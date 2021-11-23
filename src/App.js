@@ -17,13 +17,15 @@ const App = () => {
     })
   })
 
+  const handleLogout = () => auth.signOut().then(() => setUser(null))
+
   return (
     <div style={{ textAlign: 'center' }}>
       <h2>Welcome to Space Race</h2>
       <Routes>
-        <Route exact path="/" element={<Home user={user} />} />
+        <Route exact path="/" element={<Home onLogout={handleLogout} user={user} />} />
         <Route path="/settings" element={<Settings user={user} />} />
-        <Route path="/login" element={<Login setUser={setUser} user={user} />} />
+        <Route path="/login" element={<Login onLogout={handleLogout} user={user} />} />
         <Route path="/level/:id" element={<Level user={user} />} />
         {/* If path doesn't match a speecific path, show error with link to Home */}
         <Route
